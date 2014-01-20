@@ -24,3 +24,17 @@ end
 %w{libmapnik libmapnik-dev mapnik-utils python-mapnik}.each do |p|
   package p
 end
+
+application "nhm-windshaft" do
+  path "/var/www/nhm-windshaft"
+  owner "www-data"
+  group "www-data"
+  packages ["git"]
+
+  repository "git@bitbucket.org:gravitystorm/nhm-windshaft-app.git"
+  deploy_key node[:nhm_windshaft][:deploy_key]
+
+  nodejs do
+    entry_point "server.js"
+  end
+end
