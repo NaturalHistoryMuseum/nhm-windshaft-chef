@@ -1,4 +1,4 @@
-cookbook "application_nodejs", git: "https://github.com/conradev/application_nodejs.git"
+cookbook "application_nodejs", git: "http://github.com/gravitystorm/application_nodejs.git", tag: "cook-4004"
 site :opscode
 
 metadata
