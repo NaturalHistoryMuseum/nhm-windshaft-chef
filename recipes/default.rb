@@ -35,6 +35,7 @@ application "nhm-windshaft" do
   deploy_key node[:nhm_windshaft][:deploy_key]
 
   nodejs do
+    environment "HOME" => "/var/www/nhm-windshaft"
     entry_point "server.js"
   end
 end
