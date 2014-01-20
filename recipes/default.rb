@@ -25,6 +25,9 @@ end
   package p
 end
 
+include_recipe "redisio::install"
+include_recipe "redisio::enable"
+
 application "nhm-windshaft" do
   path "/var/www/nhm-windshaft"
   owner "www-data"
