@@ -13,8 +13,6 @@ include_recipe "postgres"
 package "postgresql-contrib-9.1"
 package "postgresql-9.1-postgis"
 
-include_recipe "nodejs::install_from_package"
-
 apt_repository "mapnik" do
   uri "http://ppa.launchpad.net/mapnik/v2.2.0/ubuntu"
   distribution node['lsb']['codename']

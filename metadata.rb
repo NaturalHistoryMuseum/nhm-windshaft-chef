@@ -8,4 +8,4 @@ version          '0.1.0'
 
 depends "apt"
 depends "postgres"
-depends "nodejs", "1.3.0"
+depends "application_nodejs"
