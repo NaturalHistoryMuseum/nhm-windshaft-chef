@@ -41,3 +41,17 @@ application "nhm-windshaft" do
     entry_point "server.js"
   end
 end
+
+db_name = "nhm_botany"
+db_user = "www-data"
+
+postgresql_user db_user do
+  cluster "9.1/main"
+  action :create
+end
+
+postgresql_database db_name do
+  cluster "9.1/main"
+  owner db_user
+  action :create
+end
