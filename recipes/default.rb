@@ -46,8 +46,12 @@ db_name = "nhm_botany"
 db_user = "www-data"
 cluster = "9.1/main"
 
+# TODO split into an admin user, for loading data + postgis, and a read-only
+# user for www-data access
+
 postgresql_user db_user do
   cluster cluster
+  superuser true
   action :create
 end
 
