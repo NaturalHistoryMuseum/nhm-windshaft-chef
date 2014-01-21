@@ -12,6 +12,11 @@ include_recipe "apt"
 package "postgresql-contrib-9.1"
 package "postgresql-9.1-postgis"
 
+service "postgresql" do
+  supports :reload => true, :restart => true
+  action :enable
+end
+
 apt_repository "mapnik" do
   uri "http://ppa.launchpad.net/mapnik/v2.2.0/ubuntu"
   distribution node['lsb']['codename']
