@@ -44,14 +44,15 @@ end
 
 db_name = "nhm_botany"
 db_user = "www-data"
+cluster = "9.1/main"
 
 postgresql_user db_user do
-  cluster "9.1/main"
+  cluster cluster
   action :create
 end
 
 postgresql_database db_name do
-  cluster "9.1/main"
+  cluster cluster
   owner db_user
   action :create
 end
