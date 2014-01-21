@@ -34,7 +34,7 @@ application "nhm-windshaft" do
   packages ["git"]
 
   repository "git@bitbucket.org:gravitystorm/nhm-windshaft-app.git"
-  deploy_key node[:nhm_windshaft][:deploy_key]
+  deploy_key node['nhm_windshaft']['deploy_key']
 
   nodejs do
     environment "HOME" => "/var/www/nhm-windshaft"
