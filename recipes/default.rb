@@ -33,6 +33,7 @@ include_recipe "redisio::install"
 include_recipe "redisio::enable"
 
 application "nhm-windshaft" do
+  action :deploy
   path "/var/www/nhm-windshaft"
   owner "www-data"
   group "www-data"
