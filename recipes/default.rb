@@ -60,3 +60,28 @@ postgresql_database db_name do
   owner db_user
   action :create
 end
+
+# Load postgis into the database 'manually'
+# If we were running postgis 2.0, we could do this instead:
+
+#postgresql_extension "postgis" do
+#  cluster cluster
+#  database db_name
+#end
+
+script "install postgis" do
+  not_if do
+    Chef::PostgreSQL.new(cluster).tables(db_name).include?("public.spatial_ref_sys")
+  end
+  user "postgres"
+  group "postgres"
+  interpreter "bash"
+  cwd "/var/lib/postgresql"
+  code <<-EOH
+    set -e
+    psql -d #{db_name} -f /usr/share/postgresql/9.1/contrib/postgis-1.5/postgis.sql
+    psql -d #{db_name} -c "ALTER TABLE geometry_columns OWNER TO \\\"#{db_user}\\\""
+    psql -d #{db_name} -c "ALTER TABLE spatial_ref_sys OWNER TO \\\"#{db_user}\\\""
+    psql -d #{db_name} -f /usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql
+  EOH
+end
