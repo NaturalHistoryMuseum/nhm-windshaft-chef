@@ -40,8 +40,7 @@ application "nhm-windshaft" do
   group "www-data"
   packages ["git"]
 
-  repository "git@bitbucket.org:gravitystorm/nhm-windshaft-app.git"
-  deploy_key node['nhm_windshaft']['deploy_key']
+  repository "git://github.com/NaturalHistoryMuseum/nhm-windshaft-app.git"
 
   nodejs do
     environment "HOME" => "/var/www/nhm-windshaft"
