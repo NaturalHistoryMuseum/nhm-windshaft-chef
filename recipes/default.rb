@@ -8,6 +8,7 @@
 #
 
 include_recipe "apt"
+include_recipe "ufw::recipes"
 
 package "postgresql-contrib-9.1"
 package "postgresql-9.1-postgis"
